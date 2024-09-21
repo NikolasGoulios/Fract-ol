@@ -1,0 +1,2 @@
+Here only the libraries that will be used in the project. Submodueles of other repositories.
+Writen by me only, except MLX42 that is a Codam project.
