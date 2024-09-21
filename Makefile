@@ -6,7 +6,7 @@
 #    By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/21 16:53:22 by ngoulios          #+#    #+#              #
-#    Updated: 2024/09/21 19:05:22 by ngoulios         ###   ########.fr        #
+#    Updated: 2024/09/21 19:50:38 by ngoulios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIBFT_DIR = lib/libft
 LIBMLX42_DIR = lib/MLX42
 
 # Compilation flags
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -Iinclude -I$(LIBFT_DIR)/include -I$(LIBMLX42_DIR)/include 
 
@@ -40,7 +40,7 @@ LIBMLX42 = $(LIBMLX42_DIR)/build/libmlx42.a
 
 # Linker Flags
 LIBS = $(LIBFT) $(LIBMLX42) -ldl -lglfw -pthread -lm
-MLX42_LDFLAGS = -L$(LIBMLX42_DIR)/build -lmlx42 -ldl -lglfw -pthread -lm
+MLX42_LDFLAGS = -L$(LIBMLX42_DIR)/build -lft -ldl -lglfw -pthread -lm
 
 # **************************************************************************** #
 #                                      RULES                                   #
