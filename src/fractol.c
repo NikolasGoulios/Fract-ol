@@ -6,11 +6,11 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 18:42:14 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/09/24 19:24:57 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/09/27 13:06:45 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractol.h>
+#include "fractol.h"
 
 int	main(int argc, char **argv)
 {
