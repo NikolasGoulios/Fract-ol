@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 19:17:46 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/09/24 19:27:24 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:17:45 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,20 @@
 # include <unistd.h>
 # include <MLX42/MLX42.h>
 
-/*The structS needs to be difined here */
-/*What this struct will have inside ? Should I saparate them ?*/
 
+typedef struct s_complex
+{
+	double	real;
+	double	imaginary;
+}	t_complex;
 
-/*I need a struct for the imaginary and real number equation*/
+typedef struct s_fractol
+{
+	
+}	t_fractol
+
+# define WIDTH	1200
+# define HEIGHT	1200
 
 /*DO MLX functions needs to be declaired here or ... ? Maybe not*/
 
