@@ -6,7 +6,7 @@
 #    By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/21 16:53:22 by ngoulios          #+#    #+#              #
-#    Updated: 2024/09/21 19:50:38 by ngoulios         ###   ########.fr        #
+#    Updated: 2024/10/08 17:59:17 by ngoulios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@
 NAME = fractol
 
 # Paths to submodules
-LIBFT_DIR = lib/libft
-LIBMLX42_DIR = lib/MLX42
+LIBFT_DIR = ./lib/libft
+LIBMLX42_DIR = ./lib/MLX42
 
 # Compilation flags
 CC = cc
@@ -39,8 +39,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 LIBMLX42 = $(LIBMLX42_DIR)/build/libmlx42.a
 
 # Linker Flags
-LIBS = $(LIBFT) $(LIBMLX42) -ldl -lglfw -pthread -lm
-MLX42_LDFLAGS = -L$(LIBMLX42_DIR)/build -lft -ldl -lglfw -pthread -lm
+LIBS = $(LIBFT) $(LIBMLX42) -ldl -lglfw -lm
 
 # **************************************************************************** #
 #                                      RULES                                   #

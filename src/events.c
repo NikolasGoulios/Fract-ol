@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 17:26:22 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/08 17:32:50 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:55:16 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void keyboard_hooks(mlx_key_data_t keydata, void *param)
         mlx_close_window(f->mlx);
     else if (keydata.key == MLX_KEY_R) // Reset fractal
     {
-        if (f->type == "MANDELBROT" || f->type == "Mandelbrot" || f->type == "mandelbrot")
+        if (strcmp(f->type, "MANDELBROT") == 0 || strcmp(f->type, "Mandelbrot") == 0 || strcmp(f->type, "mandelbrot") == 0)
             set_mandelbrot_params(f);
-        else if (f->type == "JULIA" || f->type == "Julia" || f->type == "julia")
+        else if (strcmp(f->type, "JULIA") == 0 || strcmp(f->type, "Julia") == 0 || strcmp(f->type, "julia") == 0)
             set_julia_params(f);
         draw_fractals(f);
     }

@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:56:09 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/08 17:15:00 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:57:29 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,19 @@ void keyboard_hooks(mlx_key_data_t keydata, void *param)
         zoom_out(f); 
 }
 
-void scroll_hook(double xdelta, double ydelta, void *param)
+void scroll_hook(double ydelta, void *param)
 {
+
     t_fractol *f = (t_fractol *)param;
-    if (ydelta > 0)
-        zoom_in(f);
+
+    if (ydelta > 0) 
+        f->zoom *= 1.1;
     else if (ydelta < 0)
-        zoom_out(f);
+        f->zoom /= 1.1;
+
+    draw_fractals(f);
 }
+
 
 void close_hook(void *param)
 {
