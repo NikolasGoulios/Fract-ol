@@ -6,35 +6,44 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:23:14 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/09/30 16:47:18 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:16:17 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../inc/fractol.h"
 
-int validity(t_fractol *f,int argc, char **argv)
+
+int is_valid(t_fractol *f, int argc, char **argv)
 {
-	if (argc == 2)
-	{
-		if (!ft_strcmp(argv[1], "Mandelbrot")
-			f-> func = &mandelbrot;
-		else
-			return (1);
-	}
-	else if (argc == 4 && !ft_strcmp(argv[1], "Julia"))
-	{
-		if (!double_check(argv[2] || !double_check(argv[3]))
-			return (1);
-		f ->julia_c_real = ft_atoi(argv[2]);
-		f ->julia_c_imaginary = ft_atold(argv[3]);
-		f ->func = &julia; 
-	}
+
+	if (strcmp(argv[1], "Mandelbrot") == 0)
+		return (argc == 2); 
+	else if (strcmp(argv[1], "Julia") == 0)
+		return (argc == 4 && is_valid_number(argv[2]) && is_valid_number(argv[3]));
 	else
-		return 1;
-	return 0;
+		return (0);
 }
 
-static int double_validity(char *str)
+int is_valid_number(const char *str)
 {
-	
+    int i = 0;
+    int dot_seen = 0;
+
+    while (ft_isspace(str[i]))
+        i++;
+    if (str[i] == '-' || str[i] == '+')
+        i++;
+    while (str[i])
+    {
+        if (!isdigit(str[i]))
+        {
+            if (str[i] == '.' && !dot_seen)
+                dot_seen = 1;
+            else
+                return (0); 
+        }
+        i++;
+    }
+
+    return (i > 0); 
 }

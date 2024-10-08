@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 15:54:04 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/08 17:14:40 by ngoulios         ###   ########.fr       */
+/*   Created: 2024/10/08 16:55:51 by ngoulios          #+#    #+#             */
+/*   Updated: 2024/10/08 17:15:06 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-int	main(int argc, char **argv)
+void set_mandelbrot_params(t_fractol *f)
 {
-	t_fractol	f;
-
-	if (argc < 2 || !is_valid(&f, argc, argv))
-		return (print_usage());
-	if (!initialize_fractol(&f))
-		return (ft_printf(ERROR_INIT));
-	mlx_key_hook(f.mlx, &keyboard_hooks, &f);
-	mlx_close_hook(f.mlx, &close_hook, &f);
-	mlx_scroll_hook(f.mlx, &scroll_hook, &f);
-	mlx_loop_hook(f.mlx, draw_fractals, &f);
-	mlx_loop(f.mlx);
-	mlx_terminate(f.mlx);
-	return (0);
+   
+    f->x_min = -2.0;
+    f->x_max = 1.0;
+    f->y_min = -1.5;
+    f->y_max = 1.5;
+    f->func = &mandelbrot; 
 }
+
+void set_julia_params(t_fractol *f)
+{
+    
+    f->x_min = -2.0;
+    f->x_max = 2.0;
+    f->y_min = -2.0;
+    f->y_max = 2.0;
+    f->func = &julia; 
+}
+

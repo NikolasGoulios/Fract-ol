@@ -1,6 +1,10 @@
 {
 	"files.associations": {
 		"mlx42_int.h": "c",
-		"glfw3.h": "c"
-	}
+		"glfw3.h": "c",
+		"mlx42.h": "c",
+		"stdio.h": "c",
+		"stdlib.h": "c"
+	},
+	"C_Cpp.errorSquiggles": "enabled"
 }

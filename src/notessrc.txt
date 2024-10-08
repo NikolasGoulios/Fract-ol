@@ -1,1 +1,0 @@
-Here only the source code that is written by me will be available. Only .c files writen by me.
