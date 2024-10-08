@@ -6,12 +6,13 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:23:14 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/08 17:16:17 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:20:28 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
+int is_valid_number(const char *str);
 
 int is_valid(t_fractol *f, int argc, char **argv)
 {
@@ -35,7 +36,7 @@ int is_valid_number(const char *str)
         i++;
     while (str[i])
     {
-        if (!isdigit(str[i]))
+        if (!ft_isdigit(str[i]))
         {
             if (str[i] == '.' && !dot_seen)
                 dot_seen = 1;
