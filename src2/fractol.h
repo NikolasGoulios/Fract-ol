@@ -6,11 +6,9 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/10 22:23:02 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/10 22:44:46 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
@@ -52,14 +50,14 @@ typedef struct s_fractol
 	int			mono_color;
 }				t_fractol;
 
-// Hooks
-void		close_hook(void *arg);
-void		keyboard_hooks(mlx_key_data_t k_data, void *arg);
-void		scroll_hook(double xdelta, double ydelta, void *arg);
+// Events
+void		on_close(void *arg);
+void		on_keyboard(mlx_key_data_t k_data, void *arg);
+void		on_scroll(double xdelta, double ydelta, void *arg);
 
 // Colors
 uint32_t	color_generator(int i, t_fractol *f);
-void		get_random_colors(t_fractol *f);
+void		random_colors(t_fractol *f);
 
 // Sets
 int			is_in_mandelbrot(t_fractol *f);
@@ -71,9 +69,9 @@ t_complex	ft_complex_square(t_complex comp);
 
 // Utils
 int			initialize_fractol(t_fractol *f);
+void		draw_fractals(void *param);
 void		ft_putstr_fd(char *s, int fd);
-long double	ft_atold(const char *s);
-int			ft_strcmp(char *str1, char *str2);
+long double str_to_ld(const char *s);
 int			validity_check(t_fractol *f, int argc, char **argv);
 
 #endif

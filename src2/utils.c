@@ -6,15 +6,13 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:18 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/10 22:23:19 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/10 22:46:46 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "fractol.h"
 
-long double	ft_atold(const char *s)
+long double	str_to_ld(const char *s)
 {
 	char		*str;
 	long double	int_part;
