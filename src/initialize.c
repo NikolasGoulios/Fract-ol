@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:55:31 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/08 17:15:03 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:54:11 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int initialize_fractal(t_fractol *f)
 
     f->image = mlx_new_image(f->mlx, WIDTH, HEIGHT);
     if (!f->image)
-        return cleanup(f);
+        return (cleanup(f));
     if (strcmp(f->type, "Mandelbrot") == 0)
         set_mandelbrot_params(f);
     else if (strcmp(f->type, "Julia") == 0)

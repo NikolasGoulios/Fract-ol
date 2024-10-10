@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 19:17:46 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/08 17:11:50 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:18:44 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,16 @@ void keyboard_hooks(mlx_key_data_t keydata, void *param);
 void scroll_hook(double xdelta, double ydelta, void *param);
 void close_hook(void *param);
 void cool_display_window(t_fractol *f);
+// In fractol.h or hooks.h, declare these functions
+void zoom_in(t_fractol *f);
+void zoom_out(t_fractol *f);
+// fractol.h
+
+void cleanup(t_fractol *f); // Declaration for cleanup
+int color_generator(int iter, t_fractol *f); // Declaration for color generator
+void get_random_colors(t_fractol *f); // Declaration for get_random_colors
+
+
 
 # define ERROR_INIT "Error: MLX initialization failed.\n"
 

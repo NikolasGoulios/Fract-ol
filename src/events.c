@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 17:26:22 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/08 17:55:16 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:11:13 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void scroll_hook(double xdelta, double ydelta, void *param)
 {
     t_fractol *f = (t_fractol *)param;
 
+	(void) xdelta;
     if (ydelta > 0) // Zoom in
         f->zoom *= 1.1;
     else if (ydelta < 0) // Zoom out

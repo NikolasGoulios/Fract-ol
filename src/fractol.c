@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:54:04 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/09 13:50:10 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:56:43 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_fractol	f;
 
 	if (argc < 2 || !is_valid(&f, argc, argv))
-		return (print_usage());
+			print_usage();
 	if (!initialize_fractal(&f))
 		return (ft_printf(ERROR_INIT));
 	mlx_key_hook(f.mlx, &keyboard_hooks, &f);

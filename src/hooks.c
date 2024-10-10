@@ -6,11 +6,21 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:56:09 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/08 17:57:29 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:16:42 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
+
+void zoom_in(t_fractol *f)
+{
+    f->zoom *= 1.1; // Adjust the zoom factor as needed
+}
+
+void zoom_out(t_fractol *f)
+{
+    f->zoom /= 1.1; // Adjust the zoom factor as needed
+}
 
 void keyboard_hooks(mlx_key_data_t keydata, void *param)
 {
@@ -24,22 +34,9 @@ void keyboard_hooks(mlx_key_data_t keydata, void *param)
         zoom_out(f); 
 }
 
-void scroll_hook(double ydelta, void *param)
-{
-
-    t_fractol *f = (t_fractol *)param;
-
-    if (ydelta > 0) 
-        f->zoom *= 1.1;
-    else if (ydelta < 0)
-        f->zoom /= 1.1;
-
-    draw_fractals(f);
-}
-
-
 void close_hook(void *param)
 {
     t_fractol *f = (t_fractol *)param;
     mlx_terminate(f->mlx);
 }
+
