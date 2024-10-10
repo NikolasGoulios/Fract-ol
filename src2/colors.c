@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 03:40:24 by upolat            #+#    #+#             */
-/*   Updated: 2024/07/31 03:55:09 by upolat           ###   ########.fr       */
+/*   Created: 2024/10/10 22:22:50 by ngoulios          #+#    #+#             */
+/*   Updated: 2024/10/10 22:22:51 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "fractol.h"
 

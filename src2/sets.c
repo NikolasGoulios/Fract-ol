@@ -3,63 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   sets.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 03:47:28 by upolat            #+#    #+#             */
-/*   Updated: 2024/08/02 02:35:07 by upolat           ###   ########.fr       */
+/*   Created: 2024/10/10 22:23:11 by ngoulios          #+#    #+#             */
+/*   Updated: 2024/10/10 22:23:12 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include "fractol.h"
 
-int	is_in_julia(t_fractol *f)
+static int calculate_fractal(t_fractol *f, t_complex z, t_complex c)
 {
-	int			i;
-	t_complex	z;
-	t_complex	c;
-	double		magnitude_squared;
+	int     i;
+	double  magnitude_squared;
 
 	i = 0;
-	z.real = f->x0;
-	z.i = f->y0;
-	c.real = f->julia_c_real;
-	c.i = f->julia_c_imaginary;
 	while (i < f->precision)
 	{
 		z = ft_complex_sum(ft_complex_square(z), c);
 		magnitude_squared = z.real * z.real + z.i * z.i;
 		if (magnitude_squared > 4.0)
 		{
-			i = i * f->mono_color;
-			break ;
+			return i * f->mono_color;
 		}
 		i++;
 	}
-	return (i);
+	return i;
 }
 
-int	is_in_mandelbrot(t_fractol *f)
+int is_in_julia(t_fractol *f)
 {
-	int			i;
-	t_complex	z;
-	t_complex	c;
-	double		magnitude_squared;
+	t_complex z = {f->x0, f->y0};
+	t_complex c = {f->julia_c_real, f->julia_c_imaginary};
+	return calculate_fractal(f, z, c);
+}
 
-	i = 0;
-	z.real = 0;
-	z.i = 0;
-	c.real = f->x0;
-	c.i = f->y0;
-	while (i < f->precision)
-	{
-		z = ft_complex_sum(ft_complex_square(z), c);
-		magnitude_squared = z.real * z.real + z.i * z.i;
-		if (magnitude_squared > 4.0)
-		{
-			i = i * f->mono_color;
-			break ;
-		}
-		i++;
-	}
-	return (i);
+int is_in_mandelbrot(t_fractol *f)
+{
+	t_complex z = {0, 0};
+	t_complex c = {f->x0, f->y0};
+	return calculate_fractal(f, z, c);
 }

@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   arithmetic.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 03:50:26 by upolat            #+#    #+#             */
-/*   Updated: 2024/08/02 14:47:14 by upolat           ###   ########.fr       */
+/*   Created: 2024/10/10 22:22:39 by ngoulios          #+#    #+#             */
+/*   Updated: 2024/10/10 22:22:40 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include "fractol.h"
 
-t_complex	ft_complex_sum(t_complex comp1, t_complex comp2)
+t_complex ft_complex_sum(t_complex comp1, t_complex comp2)
 {
-	t_complex	result;
-
-	result.real = comp1.real + comp2.real;
-	result.i = comp1.i + comp2.i;
-	return (result);
+	return (t_complex){
+		.real = comp1.real + comp2.real,
+		.i = comp1.i + comp2.i
+	};
 }
 
-t_complex	ft_complex_square(t_complex comp)
+t_complex ft_complex_square(t_complex comp)
 {
-	t_complex	result;
-
-	result.real = (comp.real * comp.real) - (comp.i * comp.i);
-	result.i = 2 * comp.real * comp.i;
-	return (result);
+	return (t_complex){
+		.real = (comp.real * comp.real) - (comp.i * comp.i),
+		.i = 2 * comp.real * comp.i
+	};
 }

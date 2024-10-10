@@ -6,7 +6,7 @@
 #    By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/21 16:53:22 by ngoulios          #+#    #+#              #
-#    Updated: 2024/10/08 17:59:17 by ngoulios         ###   ########.fr        #
+#    Updated: 2024/10/10 22:24:04 by ngoulios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,8 @@ CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -Iinclude -I$(LIBFT_DIR)/include -I$(LIBMLX42_DIR)/include 
 
 # Source files
-SRC = $(wildcard src/*.c)
-OBJ = $(SRC:.c=.o)
+SRC = $(wildcard src2/*.c)
+OBJ = $(SRC2:.c=.o)
 
 # Libraries
 LIBFT = $(LIBFT_DIR)/libft.a

@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/28 02:00:36 by upolat            #+#    #+#             */
-/*   Updated: 2024/08/03 15:14:39 by upolat           ###   ########.fr       */
+/*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
+/*   Updated: 2024/10/10 22:23:02 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #ifndef FRACTOL_H
 # define FRACTOL_H

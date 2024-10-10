@@ -3,62 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   validity.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 01:29:04 by upolat            #+#    #+#             */
-/*   Updated: 2024/08/03 15:08:14 by upolat           ###   ########.fr       */
+/*   Created: 2024/10/10 22:23:25 by ngoulios          #+#    #+#             */
+/*   Updated: 2024/10/10 22:23:30 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int	double_validity_check(char *str)
+static int is_valid_double(const char *str)
 {
-	int	i;
-	int	dot_counter;
-
-	dot_counter = 0;
-	i = 0;
-	while (str[i])
-		i++;
-	if (str[i - 1] == '.')
-		return (0);
-	if (!(str[0] <= '9' && str[0] >= '0')
-		&& str[0] != '.' && str[0] != '+' && str[0] != '-')
-		return (0);
-	i = 1;
-	while (str[i])
+	int dot_count = 0;
+	if (*str == '+' || *str == '-') 
+		str++;
+	if (*str == '.') 
+		return 0;
+	while (*str) 
 	{
-		if (str[i] == '.')
-			dot_counter++;
-		if (dot_counter > 1)
-			return (0);
-		if (!(str[i] <= '9' && str[i] >= '0') && str[i] != '.')
-			return (0);
-		if (i > 0 && (str[i]))
-			i++;
+		if (*str == '.') 
+		{
+			if (++dot_count > 1) 
+				return 0;
+		} 
+		else if (*str < '0' || *str > '9') 
+			return 0;
+		str++;
 	}
-	return (1);
+	return (*(str - 1) != '.');
 }
-
-int	validity_check(t_fractol *f, int argc, char **argv)
+	
+int validity_check(t_fractol *f, int argc, char **argv)
 {
-	if (argc == 2)
-	{
-		if (!ft_strcmp(argv[1], "Mandelbrot"))
-			f->func = &is_in_mandelbrot;
-		else
-			return (0);
+	if (argc == 2 && !ft_strcmp(argv[1], "Mandelbrot")) {
+		f->func = &is_in_mandelbrot;
+		return 1;
 	}
-	else if (argc == 4 && !ft_strcmp(argv[1], "Julia"))
+	
+	if (argc == 4 && !ft_strcmp(argv[1], "Julia")) 
 	{
-		if (!double_validity_check(argv[2]) || !double_validity_check(argv[3]))
-			return (0);
+		if (!is_valid_double(argv[2]) || !is_valid_double(argv[3])) 
+			return 0;
 		f->julia_c_real = ft_atold(argv[2]);
 		f->julia_c_imaginary = ft_atold(argv[3]);
 		f->func = &is_in_julia;
+		return 1;
 	}
-	else
-		return (0);
-	return (1);
+
+	return 0;
 }

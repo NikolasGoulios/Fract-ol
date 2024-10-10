@@ -3,67 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: upolat <upolat@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 03:55:42 by upolat            #+#    #+#             */
-/*   Updated: 2024/08/02 23:00:03 by upolat           ###   ########.fr       */
+/*   Created: 2024/10/10 22:23:18 by ngoulios          #+#    #+#             */
+/*   Updated: 2024/10/10 22:23:19 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include "fractol.h"
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	int	i;
-	int	result;
-
-	result = 0;
-	i = 0;
-	while (s[i])
-	{
-		result = write(fd, &s[i], 1);
-		i++;
-	}
-	(void)result;
-}
-
-static int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-static int	ft_atoi(const char *str)
-{
-	int			sign;
-	long long	nbr;
-
-	sign = 1;
-	nbr = 0;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-')
-	{
-		sign = -sign;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		if (sign == 1 && (nbr > (LONG_MAX - (*str - '0')) / 10))
-			return (-1);
-		else if (sign == -1 && (-nbr < (LONG_MIN + (*str - '0')) / 10))
-			return (0);
-		nbr = nbr * 10 + *str - '0';
-		str++;
-	}
-	return (sign * nbr);
-}
 
 long double	ft_atold(const char *s)
 {
@@ -93,16 +42,3 @@ long double	ft_atold(const char *s)
 	return (sign * (int_part + float_part));
 }
 
-int	ft_strcmp(char *str1, char *str2)
-{
-	int	i;
-
-	i = 0;
-	while (str1[i] || str2[i])
-	{
-		if (str1[i] != str2[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
