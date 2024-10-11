@@ -6,13 +6,13 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:35:27 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/10 22:42:47 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/11 13:41:56 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h" 
 
-static void	print_usage(void)
+void	print_usage(void)
 {
 	ft_putstr_fd("------------------------------------------------------\n", 1);
 	ft_putstr_fd("Usage:\n", 1);
@@ -61,9 +61,9 @@ void	draw_fractals(void *param)
 
 static void	set_values(t_fractol *f)
 {
-	f->a = 255;
+	f->a = 255; // I can have it here but also no need to
 	f->disco_mode = -1;
-	f->mono_color = 1;
+	f->mono_color = 1; // i dont need 
 	f->precision = 100;
 	f->zoom = 1;
 	f->x_max = 2;

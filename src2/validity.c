@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:25 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/10 22:23:30 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/11 13:53:40 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int is_valid_double(const char *str)
 int validity_check(t_fractol *f, int argc, char **argv)
 {
 	if (argc == 2 && !ft_strcmp(argv[1], "Mandelbrot")) {
-		f->func = &is_in_mandelbrot;
+		f->func = &in_mandelbrot;
 		return 1;
 	}
 	
@@ -44,9 +44,9 @@ int validity_check(t_fractol *f, int argc, char **argv)
 	{
 		if (!is_valid_double(argv[2]) || !is_valid_double(argv[3])) 
 			return 0;
-		f->julia_c_real = ft_atold(argv[2]);
-		f->julia_c_imaginary = ft_atold(argv[3]);
-		f->func = &is_in_julia;
+		f->julia_real = ft_atold(argv[2]);
+		f->julia_imaginary = ft_atold(argv[3]);
+		f->func = &in_julia;
 		return 1;
 	}
 

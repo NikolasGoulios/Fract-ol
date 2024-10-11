@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sets.c                                             :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:11 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/10 22:23:12 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/11 13:52:46 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "fractol.h"
 
@@ -23,7 +21,7 @@ static int calculate_fractal(t_fractol *f, t_complex z, t_complex c)
 	while (i < f->precision)
 	{
 		z = ft_complex_sum(ft_complex_square(z), c);
-		magnitude_squared = z.real * z.real + z.i * z.i;
+		magnitude_squared = z.real * z.real + z.imaginary * z.imaginary;
 		if (magnitude_squared > 4.0)
 		{
 			return i * f->mono_color;
@@ -36,7 +34,7 @@ static int calculate_fractal(t_fractol *f, t_complex z, t_complex c)
 int is_in_julia(t_fractol *f)
 {
 	t_complex z = {f->x0, f->y0};
-	t_complex c = {f->julia_c_real, f->julia_c_imaginary};
+	t_complex c = {f->julia_real, f->julia_imaginary};
 	return calculate_fractal(f, z, c);
 }
 
