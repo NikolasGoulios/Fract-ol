@@ -6,12 +6,12 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:53:38 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/15 21:06:46 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/15 21:10:45 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <math.h>
+#include <math.h> // for the sqrt
 
 #ifndef COMPLEX_H
 # define COMPLEX_H
