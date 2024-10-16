@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/11 13:33:28 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:07:31 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # define WIDTH	1200
 # define HEIGHT	1200
+#define BLOCK_SIZE 10
 
 typedef struct s_complex
 {

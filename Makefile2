@@ -1,4 +1,16 @@
 # **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/21 16:53:22 by ngoulios          #+#    #+#              #
+#    Updated: 2024/10/16 12:15:01 by ngoulios         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# **************************************************************************** #
 #                                PHONY TARGETS                                 #
 # **************************************************************************** #
 .PHONY: all libft libmlx42 clean fclean re
@@ -18,13 +30,9 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -Iinclude -I$(LIBFT_DIR)/include -I$(LIBMLX42_DIR)/include 
 
-# Source and Object files
-SRC = $(wildcard src/*.c)
-OBJ = $(SRC:src/%.c=obj/%.o) # Changed to store object files in 'obj/' folder
-
-# Create obj directory if it doesn't exist
-OBJ_DIR = obj
-$(shell mkdir -p $(OBJ_DIR))
+# Source files
+SRC = $(wildcard src2/*.c)
+OBJ = $(SRC2:.c=.o)
 
 # Libraries
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -37,39 +45,31 @@ LIBS = $(LIBFT) $(LIBMLX42) -ldl -lglfw -lm
 #                                      RULES                                   #
 # **************************************************************************** #
 
-# Default rule
 all: libft libmlx42 $(NAME)
 
-# Build libft
 libft:
 	@$(MAKE) -C $(LIBFT_DIR)
 
-# Build MLX42
 libmlx42:
 	@mkdir -p $(LIBMLX42_DIR)/build
 	@cd $(LIBMLX42_DIR)/build && cmake .. && make
 
-# Build fractol
 $(NAME): $(OBJ) $(LIBFT) $(LIBMLX42)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBS) $(INCLUDES) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBS) $(MLX42_LDFLAGS) -o $(NAME)
 
-# Rule for object files
-obj/%.o: src/%.c
+%.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-# Clean object files and libraries
 clean:
 	rm -f $(OBJ)
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	@$(MAKE) -C $(LIBMLX42_DIR)/build clean
 
-# Clean everything
 fclean: clean
 	rm -f $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 	@$(MAKE) -C $(LIBMLX42_DIR)/build fclean
 
-# Rebuild everything
 re: fclean all
 
 # **************************************************************************** #
