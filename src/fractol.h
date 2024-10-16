@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/16 13:07:31 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/16 18:17:26 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 # include <stdlib.h> 
 # include <limits.h> // Maybe not
 # include <unistd.h> // change it and use ft_printf
+# include <stdio.h>
 # include <MLX42/MLX42.h>
+# include "../lib/libft/libft.h" 
 
 # define WIDTH	1200
 # define HEIGHT	1200
-#define BLOCK_SIZE 10
+#define MAX_ITERATIONS 100
 
 typedef struct s_complex
 {
@@ -27,9 +29,9 @@ typedef struct s_complex
 	double	imaginary;
 }			t_complex;
 
-typedef struct s_fractol
+typedef struct s_fractal
 {
-	mlx_image_t	*image;
+	mlx_image_t	*img;
 	mlx_t		*mlx;
 	uint32_t	color;
 	double		red;
@@ -45,15 +47,15 @@ typedef struct s_fractol
 	int			precision;
 	double		julia_real;
 	double		julia_imaginary;
-	int			(*func)(struct s_fractol *f);
+	int			(*func)(struct s_fractal *f);
 	int			disco_mode;
 	double		zoom;
 	int			mono_color;
-}				t_fractol;
+}				t_fractal;
 
 
 // Events
-void			on_close(void *arg);
+/*void			on_close(void *arg);
 void			on_keyboard(mlx_key_data_t k_data, void *arg);
 void			on_scroll(double xdelta, double ydelta, void *arg);
 
@@ -77,6 +79,6 @@ void			draw_fractals(void *param);
 void			ft_putstr_fd(char *s, int fd); // Ft_printf
 long double 	str_to_ld(const char *s);
 void			print_usage(void);
-int				is_valid(t_fractol *f, int argc, char **argv);
+int				is_valid(t_fractol *f, int argc, char **argv);*/
 
 #endif
