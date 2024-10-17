@@ -4,7 +4,8 @@
 		"glfw3.h": "c",
 		"mlx42.h": "c",
 		"stdio.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"fractol.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "enabled",
 	"cmake.sourceDirectory": "/Users/nikolas/HiveCore/Fract-ol/lib/MLX42"

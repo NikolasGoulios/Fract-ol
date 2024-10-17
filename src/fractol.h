@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/16 18:17:26 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:19:43 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ typedef struct s_fractal
 	int			precision;
 	double		julia_real;
 	double		julia_imaginary;
-	int			(*func)(struct s_fractal *f);
+	//int			(*func)(struct s_fractal *f);
 	int			disco_mode;
+	int			type;
 	double		zoom;
 	int			mono_color;
 }				t_fractal;
@@ -80,5 +81,10 @@ void			ft_putstr_fd(char *s, int fd); // Ft_printf
 long double 	str_to_ld(const char *s);
 void			print_usage(void);
 int				is_valid(t_fractol *f, int argc, char **argv);*/
-
+t_complex pixel_to_complex(int x, int y, t_fractal* fractal);
+void handle_key(mlx_key_data_t keydata, void* param);
+void handle_scroll(double x_offset, double y_offset, void* param);
+void draw_fractal(t_fractal* fractal, int fractal_type, t_complex julia_c);
+void handle_close(mlx_key_data_t keydata, void *param);
+void window_close_hook(void *param);
 #endif
