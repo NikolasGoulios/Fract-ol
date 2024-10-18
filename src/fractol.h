@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/17 18:19:43 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:50:56 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_fractal
 	mlx_image_t	*img;
 	mlx_t		*mlx;
 	uint32_t	color;
+	t_complex	julia_c;
 	double		red;
 	double		grn;
 	double		blu;
@@ -47,9 +48,9 @@ typedef struct s_fractal
 	int			precision;
 	double		julia_real;
 	double		julia_imaginary;
-	//int			(*func)(struct s_fractal *f);
+	int 		(*fractal_func)(struct s_fractal *f);
 	int			disco_mode;
-	int			type;
+	int			fractal_type;
 	double		zoom;
 	int			mono_color;
 }				t_fractal;
@@ -64,7 +65,7 @@ void			on_scroll(double xdelta, double ydelta, void *arg);
 uint32_t		co_generator(int i, t_fractol *f);
 void			co_random(t_fractol *f);
 
-// Sets
+Sets
 int				in_mandelbrot(t_fractol *f);
 int				in_julia(t_fractol *f);
 
@@ -84,7 +85,16 @@ int				is_valid(t_fractol *f, int argc, char **argv);*/
 t_complex pixel_to_complex(int x, int y, t_fractal* fractal);
 void handle_key(mlx_key_data_t keydata, void* param);
 void handle_scroll(double x_offset, double y_offset, void* param);
-void draw_fractal(t_fractal* fractal, int fractal_type, t_complex julia_c);
+void draw_fractal(t_fractal* fractal);
 void handle_close(mlx_key_data_t keydata, void *param);
 void window_close_hook(void *param);
+
+//Sets
+int				mandelbrot(t_fractal *f);
+int				julia(t_fractal *f);
+uint32_t get_color(int iterations);
+int parse_arguments(int argc, char **argv, t_complex *julia_c);
+void mandelbrot_param(t_fractal *f);  // Declare mandelbrot_param function
+void set_julia_params(t_fractal *f);  // Declare set_julia_params function
+
 #endif

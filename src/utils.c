@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:54:54 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/17 17:52:22 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:08:23 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int parse_arguments(int argc, char **argv, t_complex *julia_c) 
 {
-    if (argc == 2 && ft_strcmp(argv[1], "mandelbrot") == 0) 
+    if (argc == 2 && strcmp(argv[1], "mandelbrot") == 0) 
 		return (0);
-	else if (argc == 4 && ft_strcmp(argv[1], "julia") == 0) 
+	else if (argc == 4 && strcmp(argv[1], "julia" ) == 0) 
 	{
         julia_c->real = ft_atoi(argv[2]);
         julia_c->imaginary = ft_atoi(argv[3]);
