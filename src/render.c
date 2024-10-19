@@ -6,21 +6,18 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:03:11 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/18 18:38:32 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/19 14:07:46 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void draw_fractal(t_fractal *fractal) {
+void draw_fractal(t_fractal *fractal) 
+{
     // Debug output can be left commented for performance
     // printf("Drawing fractal...\n");  
 
     int y, x, iterations;
-
-    // No need to reset the fractal bounds here.
-    // The bounds are set at initialization and changed by zoom and movement.
-
     y = 0;
     while (y < HEIGHT) 
 	{
@@ -63,24 +60,6 @@ int fractal_iteration(t_complex z, t_complex c, int max_iter)
     
     return iter;
 }
-/*int julia(t_complex z, t_complex c) {
-    int iterations = 0;
-
-    while (iterations < MAX_ITERATIONS) {
-        // Calculate z^2 + c
-        double real_temp = z.real * z.real - z.imaginary * z.imaginary + c.real;
-        z.imaginary = 2.0 * z.real * z.imaginary + c.imaginary;
-        z.real = real_temp;
-
-        // Check if modulus exceeds 2 (escape condition)
-        if ((z.real * z.real + z.imaginary * z.imaginary) > 4.0) {
-            return iterations; // Point escapes
-        }
-        iterations++;
-    }
-
-    return MAX_ITERATIONS; // Point is in the Julia set
-}*/
 
 int mandelbrot(t_fractal *f) 
 {

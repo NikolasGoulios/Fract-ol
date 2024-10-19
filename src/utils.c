@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:54:54 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/18 17:08:23 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/19 14:09:01 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ int parse_arguments(int argc, char **argv, t_complex *julia_c)
         return (1);
     } 
 	else 
-	{
-        ft_printf("Usage: ./fractol [mandelbrot | julia <real> <imaginary>]\n");
-        return (-1);
-    }
+		return (-1);
 }
 
 uint32_t get_color(int iterations) 

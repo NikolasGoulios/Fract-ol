@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:05:42 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/19 13:46:56 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/19 14:06:28 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ void handle_scroll(double x_offset, double y_offset, void* param)
     fractal->x_max = real_center + real_range / 2;
     fractal->y_min = imaginary_center - imaginary_range / 2;
     fractal->y_max = imaginary_center + imaginary_range / 2;
-
-    // Clear the old image
     mlx_delete_image(fractal->mlx, fractal->img);
 
     // Create a new image for the updated fractal
