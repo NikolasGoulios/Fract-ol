@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:54:54 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/23 18:15:53 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:34:54 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int parsing_julia(int argc, char **argv)
 	{
 		if (!parsing_double(argv[2]) || !parsing_double(argv[3]))
 			{
-				log_error("Invalid argument for unsigned double A and/or double B"); //Change it your style
+				ft_printf("Invalid argument for unsigned double A and/or double B"); //Change it your style
 				return (0);
 			}
 		return(1);

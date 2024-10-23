@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:05:42 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/23 19:00:36 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:17:25 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,11 @@ void handle_scroll(double xdelta, double ydelta, void* param)
 
     (void) xdelta;  // Unused, we only care about vertical scrolling
     mlx_get_mouse_pos(fractal->mlx, &(fractal->pixel_x), &(fractal->pixel_y));
-    pixel_to_complex(&mouse_r, &mouse_i, fractal);
+	t_complex mouse_pos = pixel_to_complex(fractal->pixel_x, fractal->pixel_y, fractal);
+	mouse_r = mouse_pos.real;
+	mouse_i = mouse_pos.imaginary;
+
+
 
     if (ydelta > 0)
         zoom = 0.9;  // Zoom in

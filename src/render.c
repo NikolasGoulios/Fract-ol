@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:03:11 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/23 18:43:01 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:36:12 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	draw_fractal(t_fractal *fractal)
             iterations = fractal->fractal_func(fractal);
 
             // Set the pixel color based on iterations
-            color = get_color(iterations);
+            color = get_color(iterations, fractal->precision);
             mlx_put_pixel(fractal->img, x, y, color);
 
             x++;
