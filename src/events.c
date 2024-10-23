@@ -6,99 +6,105 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:05:42 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/19 14:06:28 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:00:36 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+/* General key hook function to handle closing the window and adjusting max iterations. */
 void handle_key(mlx_key_data_t keydata, void* param) 
 {
     t_fractal* fractal = (t_fractal*)param;
-    double move_factor = 0.1 * (fractal->x_max - fractal->x_min);
-    int moved = 0;
 
-    if ((keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_RIGHT || 
-         keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_DOWN) && 
-         (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)) 
-	{
-
-        if (keydata.key == MLX_KEY_LEFT) 
-		{
-            fractal->x_min -= move_factor;
-            fractal->x_max -= move_factor;
-            moved = 1;
-        } 
-        else if (keydata.key == MLX_KEY_RIGHT) 
-		{
-            fractal->x_min += move_factor;
-            fractal->x_max += move_factor;
-            moved = 1;
-        } 
-        else if (keydata.key == MLX_KEY_UP) 
-		{
-            fractal->y_min -= move_factor;
-            fractal->y_max -= move_factor;
-            moved = 1;
-        } 
-        else if (keydata.key == MLX_KEY_DOWN) 
-		{
-            fractal->y_min += move_factor;
-            fractal->y_max += move_factor;
-            moved = 1;
-        }
-
-        if (moved) 
-		{
-            draw_fractal(fractal);
-            mlx_image_to_window(fractal->mlx, fractal->img, 0, 0);
-        }
-    }
-	
+    // Handle closing the window with ESC key
     if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS) 
-	{
+    {
+        mlx_delete_image(fractal->mlx, fractal->img);
         mlx_close_window(fractal->mlx);
     }
+
+    // Adjust the max number of iterations with +/- keys
+    if (mlx_is_key_down(fractal->mlx, MLX_KEY_KP_SUBTRACT) && fractal->precision > 5) 
+    {
+        fractal->precision *= 0.9;  // Reduce iterations
+    }
+    if (mlx_is_key_down(fractal->mlx, MLX_KEY_KP_ADD) && fractal->precision < 500) 
+    {
+        fractal->precision *= 1.1;  // Increase iterations
+    }
 }
 
-
-void handle_scroll(double x_offset, double y_offset, void* param) 
+/* Key hook function to modify the Julia set's constant (julia_c). */
+void handle_key_julia(void* param) 
 {
-	(void) x_offset;
     t_fractal* fractal = (t_fractal*)param;
 
-    double zoom_factor = (y_offset > 0) ? 0.9 : 1.1;
-    double real_center = (fractal->x_min + fractal->x_max) / 2;
-    double imaginary_center = (fractal->y_min + fractal->y_max) / 2;
-    double real_range = (fractal->x_max - fractal->x_min) * zoom_factor;
-    double imaginary_range = (fractal->y_max - fractal->y_min) * zoom_factor;
-
-    fractal->x_min = real_center - real_range / 2;
-    fractal->x_max = real_center + real_range / 2;
-    fractal->y_min = imaginary_center - imaginary_range / 2;
-    fractal->y_max = imaginary_center + imaginary_range / 2;
-    mlx_delete_image(fractal->mlx, fractal->img);
-
-    // Create a new image for the updated fractal
-    fractal->img = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);
-
-    // Redraw the fractal with new zoom settings
-    draw_fractal(fractal);
-
-    // Push the new image to the window
-    mlx_image_to_window(fractal->mlx, fractal->img, 0, 0);
-
-    // Debug print
-    printf("Zoom updated bounds: x_min = %f, x_max = %f, y_min = %f, y_max = %f\n", fractal->x_min, fractal->x_max, fractal->y_min, fractal->y_max);
+    if (mlx_is_key_down(fractal->mlx, MLX_KEY_LEFT_CONTROL)) 
+    {
+        if (mlx_is_key_down(fractal->mlx, MLX_KEY_LEFT_SHIFT))
+            fractal->julia_c.real *= 0.9;  // Adjust real part of Julia constant
+        else
+            fractal->julia_c.real *= 1.1;
+    }
+    if (mlx_is_key_down(fractal->mlx, MLX_KEY_RIGHT_CONTROL)) 
+    {
+        if (mlx_is_key_down(fractal->mlx, MLX_KEY_RIGHT_SHIFT))
+            fractal->julia_c.imaginary *= 0.9;  // Adjust imaginary part of Julia constant
+        else
+            fractal->julia_c.imaginary *= 1.1;
+    }
 }
 
-void handle_close(mlx_key_data_t keydata, void *param) 
+/* Key hook function to move the fractal view using arrow keys. */
+void handle_key_arrow(void* param) 
 {
-    if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS) 
-		mlx_close_window((mlx_t*)param);
+    t_fractal* fractal = (t_fractal*)param;
+    double real_delta = fractal->x_max - fractal->x_min;
+    double imag_delta = fractal->y_max - fractal->y_min;
+	double move_step = 0.1;  // The percentage of the current view range to move
+	
+    if (mlx_is_key_down(fractal->mlx, MLX_KEY_RIGHT)) 
+    {
+        fractal->x_min += real_delta * move_step;
+        fractal->x_max += real_delta * move_step;
+    }
+    if (mlx_is_key_down(fractal->mlx, MLX_KEY_LEFT)) 
+    {
+        fractal->x_min -= real_delta * move_step;
+        fractal->x_max -= real_delta * move_step;
+    }
+    if (mlx_is_key_down(fractal->mlx, MLX_KEY_DOWN)) 
+    {
+        fractal->y_min -= imag_delta * move_step;
+        fractal->y_max -= imag_delta * move_step;
+    }
+    if (mlx_is_key_down(fractal->mlx, MLX_KEY_UP)) 
+    {
+        fractal->y_min += imag_delta * move_step;
+        fractal->y_max += imag_delta * move_step;
+    }
 }
 
-void window_close_hook(void *param) 
+/* Scroll hook function to handle zooming in and out. */
+void handle_scroll(double xdelta, double ydelta, void* param) 
 {
-    mlx_terminate((mlx_t*)param);
+    t_fractal* fractal = (t_fractal*)param;
+    double mouse_r, mouse_i, zoom;
+
+    (void) xdelta;  // Unused, we only care about vertical scrolling
+    mlx_get_mouse_pos(fractal->mlx, &(fractal->pixel_x), &(fractal->pixel_y));
+    pixel_to_complex(&mouse_r, &mouse_i, fractal);
+
+    if (ydelta > 0)
+        zoom = 0.9;  // Zoom in
+    else if (ydelta < 0)
+        zoom = 1.1;  // Zoom out
+    else
+        return;
+
+    fractal->x_min = mouse_r + (fractal->x_min - mouse_r) * zoom;
+    fractal->x_max = mouse_r + (fractal->x_max - mouse_r) * zoom;
+    fractal->y_min = mouse_i + (fractal->y_min - mouse_i) * zoom;
+    fractal->y_max = mouse_i + (fractal->y_max - mouse_i) * zoom;
 }

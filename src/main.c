@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:22:55 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/23 16:35:19 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:18:14 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int main(int argc, char **argv)
 	int fractal_type;
 	int precision;
 	
-	fractal_type = setup_fractal_type(argc, argv, &julia_c);
+	fractal_type = parsing_validity(argc, argv, &julia_c);
 	if (fractal_type == -1)
-		return(print_usage());
+		return EXIT_FAILURE;
 	mlx = init_mlx();
 	if (!mlx)
 		return EXIT_FAILURE;
@@ -52,7 +52,7 @@ mlx_t *init_mlx(void)
 	if (!mlx)
 	{
 		ft_printf("Failed to initialize MLX42\n");
-		return (0);
+		return EXIT_FAILURE;
 	}
 	return (mlx);
 }
@@ -64,7 +64,7 @@ mlx_image_t *init_image(mlx_t *mlx)
     {
         printf("Failed to create image\n");
         mlx_terminate(mlx);
-        return NULL;
+        return EXIT_FAILURE;
     }
     return img;
 }

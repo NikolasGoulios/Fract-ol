@@ -6,15 +6,15 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:54:54 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/23 16:02:21 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:15:53 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int parsing_julia(int argc, char **argv);
-int parsing_double(const char *str);
-int parsing_julia_constants(t_complex *julia_c, char **argv);
+static int parsing_julia(int argc, char **argv);
+static int parsing_double(const char *str);
+static void parsing_julia_constants(t_complex *julia_c, char **argv);
 
 int parsing_validity(int argc, char **argv, t_complex *julia_c)
 {
@@ -28,16 +28,17 @@ int parsing_validity(int argc, char **argv, t_complex *julia_c)
 			return (1);
 		}
 	}
-	return (print_usage());
+	print_usage();
+	return (-1);
 }
 
-int parsing_julia_constants(t_complex *julia_c, char **argv)
+static void parsing_julia_constants(t_complex *julia_c, char **argv)
 {
 	julia_c->real = ft_atof(argv[2]);
 	julia_c->imaginary = ft_atof(argv[3]);
 }
 
-int parsing_julia(int argc, char **argv) 
+static int parsing_julia(int argc, char **argv) 
 {
 	if (argc == 4 && ft_strcmp(argv[1], "julia" ) == 0) 
 	{
@@ -51,7 +52,7 @@ int parsing_julia(int argc, char **argv)
 	return (0);
 }
 
-int parsing_double(const char *str)
+static int parsing_double(const char *str)
 {
     int decimal_point = 0;
     int i = 0;
