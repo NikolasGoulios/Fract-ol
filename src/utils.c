@@ -5,37 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 16:54:54 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/19 14:09:01 by ngoulios         ###   ########.fr       */
+/*   Created: 2024/10/23 16:02:35 by ngoulios          #+#    #+#             */
+/*   Updated: 2024/10/23 16:04:22 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int parse_arguments(int argc, char **argv, t_complex *julia_c) 
+void print_usage(void)
 {
-    if (argc == 2 && strcmp(argv[1], "mandelbrot") == 0) 
-		return (0);
-	else if (argc == 4 && strcmp(argv[1], "julia" ) == 0) 
-	{
-        julia_c->real = ft_atoi(argv[2]);
-        julia_c->imaginary = ft_atoi(argv[3]);
-        return (1);
-    } 
-	else 
-		return (-1);
+	ft_putstr(
+		"------------------------------------------------------------"
+		"--------------------\n"
+		"#######                                          \n"
+		"#       #####    ##    ####  #####  ####  #      \n"
+		"#       #    #  #  #  #    #   #   #    # #      \n"
+		"#####   #    # #    # #        #   #    # #      \n"
+		"#       #####  ###### #        #   #    # #      \n"
+		"#       #   #  #    # #    #   #   #    # #      \n"
+		"#       #    # #    #  ####    #    ####  ######\n"
+		"------------------------------------------------------------"
+		"--------------------\n");
+		ft_putstr("usage:\n ./fractol [fractal_name] [Complex Plane]"
+		"\n\nfractals:\n mandelbrot (Default)\n julia"
+		"example:\n ./fractol mandelbrot"
+		"example:\n ./fractol julia -0.5 0.4"
+		"More options:\n"
+		" ESC to exit\n"
+		" R for Reverse to defaut view.\n"
+		"------------------------------------------------------------"
+		"--------------------\n");
 }
 
-uint32_t get_color(int iterations) 
-{
-    if (iterations == MAX_ITERATIONS) 
-        return 0x000000FF;
-		
-    // Create a color gradient based on the iterations
-    // This gives a gradient from blue to red to yellow
-    int red = (iterations * 9) % 255;
-    int green = (iterations * 2) % 255;
-    int blue = (iterations * 5) % 255;
-
-    return (red << 24) | (green << 16) | (blue << 8) | 0xFF;
-}
