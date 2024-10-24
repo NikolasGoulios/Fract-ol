@@ -8,5 +8,5 @@
 		"fractol.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "enabled",
-	"cmake.sourceDirectory": "/home/ngoulios/Core/GitHub/Fract-ol/lib/MLX42/tests"
+	"cmake.sourceDirectory": "/Users/nikolas/HiveCore/Fract-ol/lib/MLX42"
 }
