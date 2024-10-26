@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:22:55 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/26 19:11:20 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/26 19:36:17 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int main(int argc, char **argv)
     }
     setup_mlx_hooks(fractal.mlx, &fractal);
     mlx_loop(fractal.mlx);
+	mlx_delete_image(fractal.mlx, fractal.img);
     mlx_terminate(fractal.mlx);
     return EXIT_SUCCESS;
 }
