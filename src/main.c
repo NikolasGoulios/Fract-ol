@@ -6,78 +6,68 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:22:55 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/23 19:32:53 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/26 18:56:57 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-mlx_t *init_mlx(void);
-mlx_image_t *init_image(mlx_t *mlx);
-
-#include "fractol.h"
-
-#include "fractol.h"
+static mlx_t *init_mlx(t_fractal *fractal);
+static mlx_image_t *init_image(t_fractal *fractal);
 
 int main(int argc, char **argv)
 {
+    perror("I am here");
     t_fractal fractal;
     t_complex julia_c;
-    mlx_t *mlx;
-    mlx_image_t *img;
-    int fractal_type;
 
-    // Validate arguments
-    fractal_type = parsing_validity(argc, argv, &julia_c);
-    if (fractal_type == -1)
-        return EXIT_FAILURE;  // Returning EXIT_FAILURE since this is an int-returning function
-
-    // Initialize MLX (pointer-returning function, use NULL for failure)
-    mlx = init_mlx();
-    if (!mlx)
-        return EXIT_FAILURE;  // Here, we return EXIT_FAILURE since main expects int, not a pointer
-
-    // Create image (pointer-returning function, use NULL for failure)
-    img = init_image(mlx);
-    if (!img)
-        return EXIT_FAILURE;  // Return EXIT_FAILURE because this is the main function
-
-    // Initialize fractal
-    init_fractal(&fractal, img, mlx, fractal_type, &julia_c);
-
-    // Draw fractal and set up hooks
+    int fractal_type = parsing_validity(argc, argv, &julia_c);
+    if (fractal_type == 1) 
+		fractal.fractal_type = 1;
+	else if (fractal_type == 2) 
+        fractal.fractal_type = 2;
+	else 
+        return EXIT_FAILURE;
+    fractal.mlx = init_mlx(&fractal);
+    if (!fractal.mlx)
+        return EXIT_FAILURE;
+    fractal.img = init_image(&fractal);
+    if (!fractal.img)
+        return EXIT_FAILURE;
+    init_fractal(&fractal, &julia_c);
     draw_fractal(&fractal);
-    mlx_image_to_window(mlx, fractal.img, 0, 0);
-    setup_mlx_hooks(mlx, &fractal);
-
-    // Start the MLX loop
-    mlx_loop(mlx);
-    mlx_terminate(mlx);
-
-    return EXIT_SUCCESS;  // Return EXIT_SUCCESS for successful completion
+    if (mlx_image_to_window(fractal.mlx, fractal.img, 0, 0) < 0) 
+	{
+        perror("Failed to display image in window");
+        mlx_terminate(fractal.mlx);
+        return EXIT_FAILURE;
+    }
+    setup_mlx_hooks(fractal.mlx, &fractal);
+    mlx_loop(fractal.mlx);
+    mlx_terminate(fractal.mlx);
+    perror("Program Complete");
+    return EXIT_SUCCESS;
 }
 
-mlx_t *init_mlx(void)
-{
-	mlx_t *mlx;
-	
-	mlx = mlx_init(WIDTH, HEIGHT, "SLAYYY", false);
-	if (!mlx)
+static mlx_t *init_mlx(t_fractal *fractal)
+{	
+	fractal->mlx = mlx_init(WIDTH, HEIGHT, "SLAYYY", false);
+	if (!fractal->mlx)
 	{
 		ft_printf("Failed to initialize MLX42\n");
 		return NULL;
 	}
-	return (mlx);
+	return (fractal->mlx);
 }
 
-mlx_image_t *init_image(mlx_t *mlx)
+static mlx_image_t *init_image(t_fractal *fractal)
 {
-    mlx_image_t *img = mlx_new_image(mlx, WIDTH, HEIGHT);
-    if (!img)
+    fractal->img = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);
+    if (!fractal->img)
     {
-        printf("Failed to create image\n");
-        mlx_terminate(mlx);
+        perror("Failed to create image\n");
+        mlx_terminate(fractal->mlx);
         return NULL;
     }
-    return (img);
+    return (fractal->img);
 }

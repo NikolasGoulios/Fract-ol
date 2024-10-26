@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:54:54 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/23 19:34:54 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/26 18:55:12 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,29 @@ static void parsing_julia_constants(t_complex *julia_c, char **argv);
 
 int parsing_validity(int argc, char **argv, t_complex *julia_c)
 {
-	if (argc == 2 && ft_strcmp(argv[1], "mandelbrot"))
-		return (1);
-	else if (argc == 4 && ft_strcmp(argv[1], "julia") == 0)
-	{
-		if (parsing_julia(argc, argv))
-		{
-			parsing_julia_constants(julia_c, argv);
-			return (1);
-		}
-	}
-	print_usage();
-	return (-1);
+    if (argc < 2)
+    {
+        print_usage();
+        return -1;
+    }
+
+    if (argc == 2 && (ft_strncmp(argv[1], "mandelbrot", 10) == 0))
+    {
+        ft_printf("Mandelbrot Set selected\n");
+        return 1;
+    }
+    else if (argc == 4 && (ft_strncmp(argv[1], "julia", 5) == 0))
+    {
+        if (parsing_julia(argc, argv))
+        {
+            ft_printf("Julia Set selected\n");
+            parsing_julia_constants(julia_c, argv);
+            return 2;
+        }
+    }
+
+    print_usage();
+    return -1;
 }
 
 static void parsing_julia_constants(t_complex *julia_c, char **argv)
@@ -40,7 +51,7 @@ static void parsing_julia_constants(t_complex *julia_c, char **argv)
 
 static int parsing_julia(int argc, char **argv) 
 {
-	if (argc == 4 && ft_strcmp(argv[1], "julia" ) == 0) 
+	if (argc == 4 && ft_strncmp(argv[1], "julia", 5) == 0) 
 	{
 		if (!parsing_double(argv[2]) || !parsing_double(argv[3]))
 			{

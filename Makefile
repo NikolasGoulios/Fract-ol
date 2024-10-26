@@ -15,7 +15,7 @@ LIBMLX42_DIR = ./lib/MLX42
 
 # Compilation flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 INCLUDES = -Iinclude -I$(LIBFT_DIR)/include -I$(LIBMLX42_DIR)/include 
 
 # Source and Object files
