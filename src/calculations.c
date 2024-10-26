@@ -6,18 +6,17 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:29:42 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/26 19:00:07 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/26 19:10:39 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-// Improved pixel to complex mapping
 t_complex pixel_to_complex(int x, int y, t_fractal *f)
 {
     t_complex c;
-	x = (x < 0) ? 0 : (x >= WIDTH ? WIDTH - 1 : x);
-    y = (y < 0) ? 0 : (y >= HEIGHT ? HEIGHT - 1 : y);
+	x = (x < 0) ? 0 : (x >= WIDTH ? WIDTH - 1 : x); // Change it
+    y = (y < 0) ? 0 : (y >= HEIGHT ? HEIGHT - 1 : y); // Change it
 	
     double range_x = f->x_max - f->x_min;
     double range_y = f->y_max - f->y_min;

@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/26 18:15:38 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/26 19:09:35 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void			mandelbrot_param(t_fractal *f);
 void			set_julia_params(t_fractal *f);  
 
 // Color Utility Functions
-//uint32_t		get_color(int iterations);
 uint32_t 		get_color(int iterations, int max_iterations, double k_red, double k_green, double k_blue);
 uint32_t 		ft_pixel(uint32_t red, uint32_t green, uint32_t blue, uint32_t a);
 
@@ -105,8 +104,7 @@ uint32_t 		ft_pixel(uint32_t red, uint32_t green, uint32_t blue, uint32_t a);
 
 // Utility Functions
 void			print_usage(void);
-
-int			parsing_validity(int argc, char **argv, t_complex *julia_c);
+int			parsing_valdity(int argc, char **argv, t_complex *julia_c);
 void		init_fractal(t_fractal *fractal, t_complex *julia_c);
 void		setup_mlx_hooks(mlx_t *mlx, t_fractal *fractal);
 

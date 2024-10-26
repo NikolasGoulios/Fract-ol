@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:06:36 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/26 18:57:09 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/26 19:10:53 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void init_fractal(t_fractal *fractal, t_complex *julia_c)
 {
-    // Initialize common parameters
     fractal->max_iter = MAX_ITERATIONS;
     fractal->zoom = 1.0;
     fractal->color = 0;
@@ -26,9 +25,7 @@ void init_fractal(t_fractal *fractal, t_complex *julia_c)
     fractal->disco_mode = 0;
 
     if (fractal->fractal_type == 1)
-    {
         mandelbrot_param(fractal);
-    }
     else if (fractal->fractal_type == 2)
     {
         set_julia_params(fractal);

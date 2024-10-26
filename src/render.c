@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:03:11 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/26 19:00:12 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/26 19:11:51 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void draw_fractal(t_fractal *fractal)
     int x;
     int iterations;
 
-    // Bounds checking to prevent buffer overflow
     if (!fractal->img || !fractal->mlx)
     {
         ft_printf("Error: Invalid image or MLX context\n");

@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:22:55 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/26 18:56:57 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/26 19:11:20 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static mlx_image_t *init_image(t_fractal *fractal);
 
 int main(int argc, char **argv)
 {
-    perror("I am here");
     t_fractal fractal;
     t_complex julia_c;
 
@@ -45,7 +44,6 @@ int main(int argc, char **argv)
     setup_mlx_hooks(fractal.mlx, &fractal);
     mlx_loop(fractal.mlx);
     mlx_terminate(fractal.mlx);
-    perror("Program Complete");
     return EXIT_SUCCESS;
 }
 
