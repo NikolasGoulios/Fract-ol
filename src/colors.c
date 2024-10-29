@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:11:53 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/26 19:32:33 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/29 12:56:12 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ uint32_t get_color(int iterations, int max_iterations, double k_red, double k_gr
         return (0xFF000000);  // Black for points in set 
     double t = (double)iterations / max_iterations;
     
-    uint8_t r = (uint8_t)(255 * (0.5 + 0.5 * cos(k_red * 6.28318 * t)));
+    uint8_t r = (uint8_t)(255 * (0.5 + 0.5 * cos(k_red * 6.28318 * t + 0.5435)));
     uint8_t g = (uint8_t)(255 * (0.5 + 0.5 * cos(k_green * 6.28318 * t + 2.09439)));
     uint8_t b = (uint8_t)(255 * (0.5 + 0.5 * cos(k_blue * 6.28318 * t + 4.18879)));
     
