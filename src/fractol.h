@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/29 12:52:24 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:14:23 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 # include "MLX42/MLX42.h" 
 # include "../lib/libft/libft.h" 
 
-# define WIDTH 1200
-# define HEIGHT 1200
+# define WIDTH  0
+# define HEIGHT 0
+# define WINDOW_TITLE "Fractal Og"
 # define MAX_ITERATIONS 100
-# define K_RED 0.5
-# define K_GREEN 0.5
-# define K_BLUE 0.5
+# define K_RED 0.51
+# define K_GREEN 0.51
+# define K_BLUE 0.51
 
 // Struct Definitions
 typedef struct s_complex
@@ -41,7 +42,7 @@ typedef struct s_fractal
 
     // Fractal Type and Function
     int			(*fractal_func)(struct s_fractal *);
-    int			fractal_type;  // 0: Mandelbrot, 1: Julia
+    int			fractal_type;  // 1: Mandelbrot, 2: Julia
 
     // Julia Set Constants
     t_complex	julia_c;
@@ -67,7 +68,7 @@ typedef struct s_fractal
     double		grn;
     double		blu;
     double		a;  // Alpha channel
-    int			mono_color;
+    int			mono_color; // Black and White later
     int			disco_mode;  // 1: Disco mode enabled, 0: disabled
 
     // Pixel Position for Current Fractal Render

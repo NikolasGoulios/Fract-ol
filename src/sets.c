@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 18:40:48 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/26 18:54:12 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:15:24 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void mandelbrot_param(t_fractal *f)
     f->precision = MAX_ITERATIONS;
     f->fractal_func = &mandelbrot;
     f->mono_color = 0;
-    f->disco_mode = 0;
+    //f->disco_mode = 0;
 }
 
 void set_julia_params(t_fractal *f) 
@@ -77,6 +77,6 @@ void set_julia_params(t_fractal *f)
     f->precision = MAX_ITERATIONS;
     f->fractal_func = &julia;
     f->mono_color = 0;
-    f->disco_mode = 0;
+    //f->disco_mode = 0;
 }
 
