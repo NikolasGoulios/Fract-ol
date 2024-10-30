@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:06:36 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/29 15:43:18 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:15:49 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 void	init_fractal(t_fractal *fractal, t_complex *julia_c)
 {
-	fractal->max_iter = MAX_ITERATIONS;
 	fractal->zoom = 1.0;
 	fractal->color = 0;
 	fractal->red = K_RED;
-	fractal->grn = K_GREEN;
-	fractal->blu = K_BLUE;
+	fractal->green = K_GREEN;
+	fractal->blue = K_BLUE;
 	fractal->a = 255;
 	if (fractal->fractal_type == 1)
 		mandelbrot_param(fractal);
@@ -29,4 +28,6 @@ void	init_fractal(t_fractal *fractal, t_complex *julia_c)
 		fractal->julia_real = julia_c->real;
 		fractal->julia_imaginary = julia_c->imaginary;
 	}
+	fractal->move_step = 0.025;
+	fractal->max_iter = 99;
 }

@@ -6,21 +6,21 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 18:40:48 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/29 18:17:42 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/30 17:10:56 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int fractal_iteration(t_complex z, t_complex c, int max_iter)
+int fractal_iteration(t_complex z, t_complex c, uint32_t max_iter)
 {
-    int iter = 0;
+    uint32_t iter = 0;
     double z_real = z.real;
     double z_imag = z.imaginary;
+	//t_fractal fractal;
     
-	if (max_iter <= 0 || max_iter > MAX_ITERATIONS)
-        max_iter = MAX_ITERATIONS;
-		
+	if (iter > max_iter)
+        iter = max_iter;
     while (iter < max_iter)
     {
         double z_real2 = z_real * z_real;
@@ -59,8 +59,6 @@ void mandelbrot_param(t_fractal *f)
     f->y_min = -2.0;
     f->y_max = 2.0;
     f->zoom = 1.0;
-    f->max_iter = MAX_ITERATIONS;
-    f->precision = MAX_ITERATIONS;
     f->fractal_func = &mandelbrot;
     f->mono_color = 0;
     //f->disco_mode = 0;
@@ -73,8 +71,6 @@ void set_julia_params(t_fractal *f)
     f->y_min = -2.0;
     f->y_max = 2.0;
     f->zoom = 1.0;
-    f->max_iter = MAX_ITERATIONS;
-    f->precision = MAX_ITERATIONS;
     f->fractal_func = &julia;
     f->mono_color = 0;
     //f->disco_mode = 0;

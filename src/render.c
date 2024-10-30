@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:03:11 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/26 19:11:51 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/30 18:16:59 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void draw_fractal(t_fractal *fractal)
 {
     int y = 0;
     int x;
-    int iterations;
+    uint32_t iterations;
 
     if (!fractal->img || !fractal->mlx)
     {
@@ -39,10 +39,9 @@ void draw_fractal(t_fractal *fractal)
                 iterations = fractal->fractal_func(fractal);
                 
                 // Ensure valid iterations
-                if (iterations >= 0 && iterations <= MAX_ITERATIONS)
+                if (iterations <= fractal->max_iter)
                 {
-                    fractal->color = get_color(iterations, MAX_ITERATIONS, K_RED, K_GREEN, K_BLUE);
-                    
+                    fractal->color = get_color(iterations, fractal->max_iter, fractal);
                     // Bounds checking before putting pixel
                     if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
                     {
@@ -55,5 +54,5 @@ void draw_fractal(t_fractal *fractal)
         y++;
     }
 
-    ft_printf("Fractal drawing completed successfully\n");
+    //ft_printf("Fractal drawing completed successfully\n");
 }
