@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/29 18:14:23 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:09:12 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include "MLX42/MLX42.h" 
 # include "../lib/libft/libft.h" 
 
-# define WIDTH  0
-# define HEIGHT 0
+# define WIDTH  1200
+# define HEIGHT 1200
 # define WINDOW_TITLE "Fractal Og"
 # define MAX_ITERATIONS 100
 # define K_RED 0.51
@@ -99,7 +99,6 @@ void			set_julia_params(t_fractal *f);
 
 // Color Utility Functions
 uint32_t 		get_color(int iterations, int max_iterations, double k_red, double k_green, double k_blue);
-uint32_t 		ft_pixel(uint32_t red, uint32_t green, uint32_t blue, uint32_t a);
 
 
 

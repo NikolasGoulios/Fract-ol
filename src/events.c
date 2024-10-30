@@ -6,18 +6,16 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:05:42 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/29 17:50:50 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:20:04 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-// Function to set up MLX42 hooks for keyboard, scroll, and close actions
 void setup_mlx_hooks(mlx_t *mlx, t_fractal *fractal)
 {
     mlx_key_hook(mlx, handle_key, fractal);
     mlx_scroll_hook(mlx, handle_scroll, fractal);
-    //mlx_close_hook(mlx, window_close_hook, mlx);
 }
 
 /* General key hook function for precision adjustments and window close. */
@@ -98,9 +96,3 @@ void handle_scroll(double xdelta, double ydelta, void* param)
         mlx_image_to_window(fractal->mlx, fractal->img, 0, 0);
     }
 }
-/*void window_close_hook(void *param)
-{
-    mlx_t *mlx = (mlx_t *)param;
-    mlx_terminate(mlx);
-}*/
-
