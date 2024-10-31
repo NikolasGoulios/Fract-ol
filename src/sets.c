@@ -6,73 +6,76 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 18:40:48 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/30 17:10:56 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/31 18:22:05 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int fractal_iteration(t_complex z, t_complex c, uint32_t max_iter)
+int	fractal_iteration(t_complex z, t_complex c, uint32_t max_iter)
 {
-    uint32_t iter = 0;
-    double z_real = z.real;
-    double z_imag = z.imaginary;
-	//t_fractal fractal;
-    
+	uint32_t	iter;
+	double		z_real2;
+	double		z_imag2;
+	double		temp_real;
+
+	iter = 0;
 	if (iter > max_iter)
-        iter = max_iter;
-    while (iter < max_iter)
-    {
-        double z_real2 = z_real * z_real;
-        double z_imag2 = z_imag * z_imag;
-        
-        if (z_real2 + z_imag2 > 4.0)
-            break;
-            
-        double temp_real = z_real2 - z_imag2 + c.real;
-        z_imag = 2.0 * z_real * z_imag + c.imaginary;
-        z_real = temp_real;
-        
-        iter++;
-    }
-    return iter;
+		iter = max_iter;
+	while (iter < max_iter)
+	{
+		z_real2 = z.real * z.real;
+		z_imag2 = z.imaginary * z.imaginary;
+		if (z_real2 + z_imag2 > 4.0)
+			break ;
+		temp_real = z_real2 - z_imag2 + c.real;
+		z.imaginary = 2.0 * z.real * z.imaginary + c.imaginary;
+		z.real = temp_real;
+		iter++;
+	}
+	return (iter);
 }
 
-int mandelbrot(t_fractal *f) 
+int	mandelbrot(t_fractal *f)
 {
-    t_complex z = {0.0, 0.0};
-    t_complex c = pixel_to_complex(f->pixel_x, f->pixel_y, f);
-    return fractal_iteration(z, c, f->max_iter);
+	t_complex	z;
+	t_complex	c;
+
+	z.real = 0.0;
+	z.imaginary = 0.0;
+	c = pixel_to_complex(f->pixel_x, f->pixel_y, f);
+	return (fractal_iteration(z, c, f->max_iter));
 }
 
-int julia(t_fractal *f) 
+int	julia(t_fractal *f)
 {
-    t_complex z = pixel_to_complex(f->pixel_x, f->pixel_y, f);
-    t_complex c = {f->julia_real, f->julia_imaginary};
-    return (fractal_iteration(z, c, f->max_iter));
+	t_complex	z;
+	t_complex	c;
+
+	z = pixel_to_complex(f->pixel_x, f->pixel_y, f);
+	c.real = f->julia_real;
+	c.imaginary = f->julia_imaginary;
+	return (fractal_iteration(z, c, f->max_iter));
 }
 
-void mandelbrot_param(t_fractal *f) 
+void	mandelbrot_param(t_fractal *f)
 {
-    f->x_min = -2.0;
-    f->x_max = 2.0;
-    f->y_min = -2.0;
-    f->y_max = 2.0;
-    f->zoom = 1.0;
-    f->fractal_func = &mandelbrot;
-    f->mono_color = 0;
-    //f->disco_mode = 0;
+	f->x_min = -2.0;
+	f->x_max = 2.0;
+	f->y_min = -2.0;
+	f->y_max = 2.0;
+	f->zoom = 1.0; // Do I initialize it anywhere else?
+	f->fractal_func = &mandelbrot;
+	f->mono_color = 0;
 }
 
-void set_julia_params(t_fractal *f) 
+void	set_julia_params(t_fractal *f)
 {
-    f->x_min = -2.0;
-    f->x_max = 2.0;
-    f->y_min = -2.0;
-    f->y_max = 2.0;
-    f->zoom = 1.0;
-    f->fractal_func = &julia;
-    f->mono_color = 0;
-    //f->disco_mode = 0;
+	f->x_min = -2.0;
+	f->x_max = 2.0;
+	f->y_min = -2.0;
+	f->y_max = 2.0;
+	f->zoom = 1.0; // Do I initialize it anywhere else?
+	f->fractal_func = &julia;
+	f->mono_color = 0;
 }
-

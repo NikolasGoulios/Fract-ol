@@ -6,13 +6,13 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:02:35 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/23 16:04:22 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/31 18:23:45 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void print_usage(void)
+void	print_usage(void)
 {
 	ft_putstr(
 		"------------------------------------------------------------"
@@ -26,7 +26,7 @@ void print_usage(void)
 		"#       #    # #    #  ####    #    ####  ######\n"
 		"------------------------------------------------------------"
 		"--------------------\n");
-		ft_putstr("usage:\n ./fractol [fractal_name] [Complex Plane]"
+	ft_putstr("usage:\n ./fractol [fractal_name] [Complex Plane]"
 		"\n\nfractals:\n mandelbrot (Default)\n julia"
 		"example:\n ./fractol mandelbrot"
 		"example:\n ./fractol julia -0.5 0.4"
@@ -36,4 +36,3 @@ void print_usage(void)
 		"------------------------------------------------------------"
 		"--------------------\n");
 }
-

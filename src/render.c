@@ -6,14 +6,14 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:03:11 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/30 18:16:59 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/31 18:15:34 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 
-void draw_fractal(t_fractal *fractal) 
+void draw_fractal(t_fractal *fractal)
 {
     int y = 0;
     int x;
@@ -21,10 +21,9 @@ void draw_fractal(t_fractal *fractal)
 
     if (!fractal->img || !fractal->mlx)
     {
-        ft_printf("Error: Invalid image or MLX context\n");
-        return;
+		ft_printf("Error: Invalid image or MLX context\n");
+		return;
     }
-
     while (y < HEIGHT) 
     {
         x = 0;
@@ -32,17 +31,12 @@ void draw_fractal(t_fractal *fractal)
         {
             fractal->pixel_x = x;
             fractal->pixel_y = y;
-
-            // Safety check for function pointer
             if (fractal->fractal_func)
             {
                 iterations = fractal->fractal_func(fractal);
-                
-                // Ensure valid iterations
                 if (iterations <= fractal->max_iter)
                 {
                     fractal->color = get_color(iterations, fractal->max_iter, fractal);
-                    // Bounds checking before putting pixel
                     if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
                     {
                         mlx_put_pixel(fractal->img, x, y, fractal->color);
@@ -53,6 +47,4 @@ void draw_fractal(t_fractal *fractal)
         }
         y++;
     }
-
-    //ft_printf("Fractal drawing completed successfully\n");
 }

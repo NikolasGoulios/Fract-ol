@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:05:42 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/30 19:14:58 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/31 17:26:27 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	handle_key_arrow(void *param)
 	fractal = (t_fractal *) param;
 	real_delta = fractal->x_max - fractal->x_min;
 	imag_delta = fractal->y_max - fractal->y_min;
-    if (mlx_is_key_down(fractal->mlx, MLX_KEY_RIGHT))
+	if (mlx_is_key_down(fractal->mlx, MLX_KEY_RIGHT))
 	{
 		fractal->x_min += real_delta * fractal->move_step;
 		fractal->x_max += real_delta * fractal->move_step;
@@ -90,24 +90,23 @@ void	handle_scroll(double xdelta, double ydelta, void *param)
 	double		mouse_r;
 	double		mouse_i;
 	double		zoom;
+
 	(void)xdelta;
-	
-	fractal = (t_fractal*)param;
-    mlx_get_mouse_pos(fractal->mlx, &(fractal->pixel_x), &(fractal->pixel_y));
-    mouse_pos = pixel_to_complex(fractal->pixel_x, fractal->pixel_y, fractal);
-    mouse_r = mouse_pos.real;
-    mouse_i = mouse_pos.imaginary;
+	fractal = (t_fractal *) param;
+	mlx_get_mouse_pos(fractal->mlx, &(fractal->pixel_x), &(fractal->pixel_y));
+	mouse_pos = pixel_to_complex(fractal->pixel_x, fractal->pixel_y, fractal);
+	mouse_r = mouse_pos.real;
+	mouse_i = mouse_pos.imaginary;
 	if (ydelta > 0)
 		zoom = 0.9;
 	else if (ydelta < 0)
 		zoom = 1.1;
-    else 
+	else
 		return ;
-    fractal->x_min = mouse_r + (fractal->x_min - mouse_r) * zoom;
+	fractal->x_min = mouse_r + (fractal->x_min - mouse_r) * zoom;
 	fractal->x_max = mouse_r + (fractal->x_max - mouse_r) * zoom;
 	fractal->y_min = mouse_i + (fractal->y_min - mouse_i) * zoom;
 	fractal->y_max = mouse_i + (fractal->y_max - mouse_i) * zoom;
 	draw_fractal(fractal);
 	mlx_image_to_window(fractal->mlx, fractal->img, 0, 0);
 }
-

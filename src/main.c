@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:22:55 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/30 18:37:09 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/10/31 17:50:37 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 }
 
 static bool	initialize_graphics(t_fractal *fractal)
-{	
+{
 	fractal->mlx = mlx_init(WIDTH, HEIGHT, WINDOW_TITLE, false);
 	if (!fractal->mlx)
 		return (false);
