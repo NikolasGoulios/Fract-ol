@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/11/01 17:47:03 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/11/01 19:19:18 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "../lib/libft/libft.h" 
 
 # define WINDOW_TITLE "Fractal Og"
-# define WIDTH  800
-# define HEIGHT 800
+# define WIDTH  2500
+# define HEIGHT 2500
 # define K_RED 0.51
 # define K_GREEN 0.51
 # define K_BLUE 0.51
