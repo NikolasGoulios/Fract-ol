@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:54:54 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/11/01 18:22:43 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/11/01 20:02:23 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int	parsing_validity(int argc, char **argv, t_complex *julia_c)
 			return (2);
 		}
 	}
+	else if (ft_strncmp(argv[1], "burningship", 12) == 0)
+		return (3);
+	else if (ft_strncmp(argv[1], "tricorn", 8) == 0)
+		return (4);
 	print_usage();
 	return (-1);
 }

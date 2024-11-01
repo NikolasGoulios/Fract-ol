@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:05:42 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/11/01 18:22:30 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/11/01 19:35:52 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,16 @@ void	handle_key(mlx_key_data_t keydata, void *param)
 		draw_fractal(fractal);
 		mlx_image_to_window(fractal->mlx, fractal->img, 0, 0);
 	}
-	else if (mlx_is_key_down(fractal->mlx, MLX_KEY_KP_ADD)
+	if (mlx_is_key_down(fractal->mlx, MLX_KEY_KP_ADD)
 		&& fractal->max_iter < 100)
 	{
 		fractal->max_iter *= 1.1;
+		draw_fractal(fractal);
+		mlx_image_to_window(fractal->mlx, fractal->img, 0, 0);
+	}
+	if (mlx_is_key_down(fractal->mlx, MLX_KEY_R))
+	{
+		init_fractal(fractal, NULL);
 		draw_fractal(fractal);
 		mlx_image_to_window(fractal->mlx, fractal->img, 0, 0);
 	}

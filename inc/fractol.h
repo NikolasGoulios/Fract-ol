@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/11/01 19:19:18 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/11/01 20:08:14 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "../lib/libft/libft.h" 
 
 # define WINDOW_TITLE "Fractal Og"
-# define WIDTH  2500
-# define HEIGHT 2500
+# define WIDTH  500
+# define HEIGHT 500
 # define K_RED 0.51
 # define K_GREEN 0.51
 # define K_BLUE 0.51
@@ -71,11 +71,15 @@ t_complex		pixel_to_complex(int x, int y, t_fractal *fractal);
 /*Fractal Set Functions*/
 int				mandelbrot(t_fractal *f);
 int				julia(t_fractal *f);
+int				burning_ship(t_fractal *f);
+int				tricorn(t_fractal *f);
 
 /*Argument Parsing and Parameter Setup*/
 int				parse_arguments(int argc, char **argv, t_complex *julia_c);
 void			mandelbrot_param(t_fractal *f);
 void			set_julia_params(t_fractal *f);
+void			burning_ship_param(t_fractal *f);
+void			tricorn_param(t_fractal *f);
 
 /* Color Utility Functions */
 uint32_t		get_color(uint32_t iterations, uint32_t max_iter, t_fractal *f);
