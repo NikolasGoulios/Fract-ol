@@ -1,4 +1,16 @@
 # **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/11/01 17:58:04 by ngoulios          #+#    #+#              #
+#    Updated: 2024/11/01 18:10:52 by ngoulios         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# **************************************************************************** #
 #                                PHONY TARGETS                                 #
 # **************************************************************************** #
 .PHONY: all libft libmlx42 clean fclean re
@@ -9,18 +21,15 @@
 
 NAME = fractol
 
-# Paths to submodules
 LIBFT_DIR = ./lib/libft
 LIBMLX42_DIR = ./lib/MLX42
 
-# Compilation flags
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 INCLUDES = -Iinclude -I$(LIBFT_DIR)/include -I$(LIBMLX42_DIR)/include 
 
-# Source and Object files
-SRC = $(wildcard src/*.c)
-OBJ = $(SRC:src/%.c=obj/%.o) # Changed to store object files in 'obj/' folder
+SRC = src/events.c src/initialize.c src/main.c src/render.c src/sets.c src/utils.c src/calculations.c src/colors.c src/parsing.c
+OBJ = $(SRC:src/%.c=obj/%.o)
 
 # Create obj directory if it doesn't exist
 OBJ_DIR = obj
@@ -61,13 +70,15 @@ obj/%.o: src/%.c
 clean:
 	rm -f $(OBJ)
 	@$(MAKE) -C $(LIBFT_DIR) clean
-	@$(MAKE) -C $(LIBMLX42_DIR)/build clean
+	@$(MAKE) -C $(LIBMLX42_DIR)/build clean || true
+	rm -rf $(OBJ_DIR)
 
 # Clean everything
 fclean: clean
 	rm -f $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@$(MAKE) -C $(LIBMLX42_DIR)/build fclean
+	@$(MAKE) -C $(LIBMLX42_DIR)/build fclean || true
+	rm -rf $(OBJ_DIR)
 
 # Rebuild everything
 re: fclean all

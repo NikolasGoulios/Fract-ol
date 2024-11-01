@@ -6,7 +6,7 @@
 #    By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/21 16:53:22 by ngoulios          #+#    #+#              #
-#    Updated: 2024/10/16 12:15:01 by ngoulios         ###   ########.fr        #
+#    Updated: 2024/11/01 17:56:01 by ngoulios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ INCLUDES = -Iinclude -I$(LIBFT_DIR)/include -I$(LIBMLX42_DIR)/include
 
 # Source files
 SRC = $(wildcard src2/*.c)
-OBJ = $(SRC2:.c=.o)
+OBJ = $(SRC:.c=.o)
 
 # Libraries
 LIBFT = $(LIBFT_DIR)/libft.a

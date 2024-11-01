@@ -5,71 +5,86 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 19:17:46 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/10 15:18:44 by ngoulios         ###   ########.fr       */
+/*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
+/*   Updated: 2024/11/01 17:47:03 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <stdlib.h>
+# include <stdlib.h> 
+# include <stdio.h>
 # include <math.h>
-# include "../lib/MLX42/include/MLX42/MLX42.h"
-# include "../lib/libft/libft.h"
+# include "MLX42/MLX42.h" 
+# include "../lib/libft/libft.h" 
 
-# define WIDTH 1500
-# define HEIGHT 1500
+# define WINDOW_TITLE "Fractal Og"
+# define WIDTH  800
+# define HEIGHT 800
+# define K_RED 0.51
+# define K_GREEN 0.51
+# define K_BLUE 0.51
+# define CLEAN_COMPLETE "Cleanup completed, memory freed succecfully\n"
 
 typedef struct s_complex
 {
-    double real;
-    double imaginary;
-}   t_complex;
+	double	real;
+	double	imaginary;
+}			t_complex;
 
-typedef struct s_fractol
+typedef struct s_fractal
 {
-    mlx_t       *mlx;
-    mlx_image_t *image;
-    double      x0;
-    double      y0;
-    double      x_min;
-    double      x_max;
-    double      y_min;
-    double      y_max;
-    int         color;
-    int         disco_mode;
-    int         mono_color;
-    int         precision;
-    double      zoom;
-    int         (*func)(struct s_fractol *f);
-    char        *type;
-}   t_fractol;
+	mlx_image_t	*img;
+	mlx_t		*mlx;
+	int			(*fractal_func)(struct s_fractal *);
+	int			fractal_type;
+	double		julia_real;
+	double		julia_imaginary;
+	uint32_t	max_iter;
+	double		move_step;
+	double		x_min;
+	double		x_max;
+	double		y_min;
+	double		y_max;
+	double		zoom;
+	uint32_t	color;
+	double		red;
+	double		green;
+	double		blue;
+	double		a;
+	int32_t		pixel_x;
+	int32_t		pixel_y;
 
+}				t_fractal;
 
-int  initialize_fractal(t_fractol *f);
-int  is_valid(t_fractol *f, int argc, char **argv);
-void draw_fractals(void *param);
-void draw_pixel(t_fractol *f, int x, int y);
-void set_mandelbrot_params(t_fractol *f);
-void set_julia_params(t_fractol *f);
-void keyboard_hooks(mlx_key_data_t keydata, void *param);
-void scroll_hook(double xdelta, double ydelta, void *param);
-void close_hook(void *param);
-void cool_display_window(t_fractol *f);
-// In fractol.h or hooks.h, declare these functions
-void zoom_in(t_fractol *f);
-void zoom_out(t_fractol *f);
-// fractol.h
+/* Event Handling Functions */
+void			handle_key(mlx_key_data_t keydata, void *param);
+void			handle_key_arrow(void *param);
+void			handle_scroll(double x_offset, double y_offset, void *param);
+void			window_close_hook(void *param);
 
-void cleanup(t_fractol *f); // Declaration for cleanup
-int color_generator(int iter, t_fractol *f); // Declaration for color generator
-void get_random_colors(t_fractol *f); // Declaration for get_random_colors
+/*Fractal Drawing Functions*/
+void			draw_fractal(t_fractal *fractal);
+t_complex		pixel_to_complex(int x, int y, t_fractal *fractal);
 
+/*Fractal Set Functions*/
+int				mandelbrot(t_fractal *f);
+int				julia(t_fractal *f);
 
+/*Argument Parsing and Parameter Setup*/
+int				parse_arguments(int argc, char **argv, t_complex *julia_c);
+void			mandelbrot_param(t_fractal *f);
+void			set_julia_params(t_fractal *f);
 
-# define ERROR_INIT "Error: MLX initialization failed.\n"
+/* Color Utility Functions */
+uint32_t		get_color(uint32_t iterations, uint32_t max_iter, t_fractal *f);
+
+/* Utility Functions */
+void			print_usage(void);
+int				parsing_validity(int argc, char **argv, t_complex *julia_c);
+void			init_fractal(t_fractal *fractal, t_complex *julia_c);
+void			setup_mlx_hooks(t_fractal *fractal);
+void			cleanup_fractal(t_fractal *fractal);
 
 #endif
-
-
