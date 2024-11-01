@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/31 18:18:35 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:43:53 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define K_GREEN 0.51 // Remove this later
 # define K_BLUE 0.51 // Remove this later
 
+# define CLEAN_COMPLETE "Cleanup complete\n"
 // Struct Definitions
 typedef struct s_complex
 {
@@ -91,6 +92,7 @@ void			print_usage(void);
 int				parsing_validity(int argc, char **argv, t_complex *julia_c);
 void			init_fractal(t_fractal *fractal, t_complex *julia_c);
 void			setup_mlx_hooks(t_fractal *fractal);
+void			cleanup_fractal(t_fractal *fractal);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:02:35 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/10/31 18:23:45 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:57:09 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,24 @@ void	print_usage(void)
 		" R for Reverse to defaut view.\n"
 		"------------------------------------------------------------"
 		"--------------------\n");
+}
+
+void cleanup_fractal(t_fractal *fractal) 
+{
+    if (fractal->img) 
+	{
+        mlx_delete_image(fractal->mlx, fractal->img);
+        fractal->img = NULL;
+    }
+    if (fractal->mlx) 
+	{
+       mlx_terminate(fractal->mlx);
+        fractal->mlx = NULL;
+    }
+	else if (fractal) 
+	{
+		free(fractal);
+		fractal = NULL;
+	}
+	ft_printf(CLEAN_COMPLETE);
 }
