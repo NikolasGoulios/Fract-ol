@@ -6,13 +6,13 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 19:44:10 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/11/01 19:57:56 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/11/03 16:59:49 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-int burning_ship(t_fractal *f)
+int	burning_ship(t_fractal *f)
 {
 	t_complex	z;
 	t_complex	c;
@@ -31,7 +31,6 @@ int burning_ship(t_fractal *f)
 		z_imag2 = z.imaginary * z.imaginary;
 		if (z_real2 + z_imag2 > 4.0)
 			break;
-
 		temp_real = z_real2 - z_imag2 + c.real;
 		z.imaginary = 2.0 * fabs(z.real * z.imaginary) + c.imaginary;
 		z.real = fabs(temp_real);
