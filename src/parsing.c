@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:54:54 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/11/01 17:48:12 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:24:53 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ int	parsing_validity(int argc, char **argv, t_complex *julia_c)
 static void	parsing_julia_constants(t_complex *julia_c, char **argv)
 {
 	julia_c->real = ft_atof(argv[2]);
-	printf("%f\n", julia_c->real);
 	julia_c->imaginary = ft_atof(argv[3]);
-	printf("%f\n", julia_c->imaginary);
 }
 
 static int	parsing_julia(int argc, char **argv)
