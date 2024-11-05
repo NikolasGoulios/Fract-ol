@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/11/01 20:08:14 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:20:35 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int				parse_arguments(int argc, char **argv, t_complex *julia_c);
 void			mandelbrot_param(t_fractal *f);
 void			set_julia_params(t_fractal *f);
 void			burning_ship_param(t_fractal *f);
-void			tricorn_param(t_fractal *f);
 
 /* Color Utility Functions */
 uint32_t		get_color(uint32_t iterations, uint32_t max_iter, t_fractal *f);

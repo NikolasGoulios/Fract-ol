@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:05:42 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/11/01 17:47:46 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:54:23 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	handle_key(mlx_key_data_t keydata, void *param)
 	fractal = (t_fractal *) param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		mlx_delete_image(fractal->mlx, fractal->img);
 		mlx_close_window(fractal->mlx);
+		return ;
 	}
 	if (mlx_is_key_down(fractal->mlx, MLX_KEY_KP_SUBTRACT)
 		&& fractal->max_iter > 5)

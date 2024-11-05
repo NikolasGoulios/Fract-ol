@@ -6,7 +6,7 @@
 #    By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/01 17:58:04 by ngoulios          #+#    #+#              #
-#    Updated: 2024/11/01 20:03:15 by ngoulios         ###   ########.fr        #
+#    Updated: 2024/11/05 18:25:35 by ngoulios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,8 +48,7 @@ SOURCES_BONUS = events_bonus.c \
     calculations_bonus.c \
     colors_bonus.c \
     parsing_bonus.c \
-	sets_burningship.c \
-	sets_tricorn.c \
+	sets_burningship.c 
 
 SRC = $(addprefix $(DIR_SRC)/,$(SOURCES))
 SRC_BONUS = $(addprefix $(DIR_BONUS)/,$(SOURCES_BONUS))
