@@ -6,15 +6,13 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:23:01 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/11/05 17:20:35 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/11/05 20:41:44 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <stdlib.h> 
-# include <stdio.h>
 # include <math.h>
 # include "MLX42/MLX42.h" 
 # include "../lib/libft/libft.h" 
