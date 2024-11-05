@@ -6,15 +6,16 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 20:01:16 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/11/01 20:04:40 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:08:45 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fractol.h"
 
-int tricorn(t_fractal *f)
+int	tricorn(t_fractal *f)
 {
-    t_complex z, c;
+    t_complex z;
+	t_complex c;
     uint32_t iter = 0;
     double z_real2, z_imag2, temp_real;
 
