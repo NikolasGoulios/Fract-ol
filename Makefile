@@ -6,7 +6,7 @@
 #    By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/01 17:58:04 by ngoulios          #+#    #+#              #
-#    Updated: 2024/12/03 17:53:19 by ngoulios         ###   ########.fr        #
+#    Updated: 2024/12/04 18:16:45 by ngoulios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ LIBFT = $(DIR_LIBFT)/libft.a
 # MLX42 is dependent on other libraries
 MLXLIB_FLAGS = $(DIR_LIBMLX42)/build/libmlx42.a -ldl -lglfw -lm
 LIBFT_FLAGS = -L $(DIR_LIBFT) -lft
+
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -MMD -MP
