@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:22:55 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/11/04 06:05:14 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/12/04 21:15:52 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 static bool		initialize_graphics(t_fractal *fractal);
 static bool		initialize_drawing_surface(t_fractal *fractal);
 
+/*
+ * Entry point for the fractal program.
+ * - Parses command-line arguments to decide fractal type and Julia constants.
+ * - Sets up the MLX environment and drawing surface.
+ * - Draws the fractal and starts the event loop.
+ */
 int	main(int argc, char **argv)
 {
 	t_fractal	fractal;
@@ -43,6 +49,11 @@ int	main(int argc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
+/*
+ * Initializes the MLX graphics environment.
+ * - Creates an MLX instance and window.
+ * - Returns false if initialization fails.
+ */
 static bool	initialize_graphics(t_fractal *fractal)
 {
 	fractal->mlx = mlx_init(WIDTH, HEIGHT, WINDOW_TITLE, false);
@@ -51,6 +62,11 @@ static bool	initialize_graphics(t_fractal *fractal)
 	return (true);
 }
 
+/*
+ * Creates the image buffer for rendering fractals.
+ * - The buffer will hold pixel data for the fractal to be drawn.
+ * - Returns false if image creation fails.
+ */
 static bool	initialize_drawing_surface(t_fractal *fractal)
 {
 	fractal->img = mlx_new_image(fractal->mlx, WIDTH, HEIGHT);

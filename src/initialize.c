@@ -6,7 +6,7 @@
 /*   By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:06:36 by ngoulios          #+#    #+#             */
-/*   Updated: 2024/11/01 17:48:03 by ngoulios         ###   ########.fr       */
+/*   Updated: 2024/12/05 00:56:03 by ngoulios         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ void	init_fractal(t_fractal *fractal, t_complex *julia_c)
 		fractal->julia_imaginary = julia_c->imaginary;
 	}
 	fractal->move_step = 0.025;
-	fractal->max_iter = 99;
+	fractal->max_iter = 100;
 }
