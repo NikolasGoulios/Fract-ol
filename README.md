@@ -1,6 +1,6 @@
 # Fract-ol 🌌
 
-![Fractal Example](/Users/nikolas/HiveCore/Fract-ol/pics/84869652-D8A5-4388-81A5-FB64CCB1316B.jpeg)
+![Fractal Example](Fract-ol/pics/84869652-D8A5-4388-81A5-FB64CCB1316B.jpeg)
 
 **Fract-ol** is a visually stunning fractal generation program built in C. Utilizing the modern MLX42 graphics library, Fract-ol renders intricate fractals such as the Mandelbrot and Julia sets with real-time controls for zooming, panning, and iteration adjustments.
 
@@ -26,7 +26,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/fract-ol.git
+   git clone git@github.com:NikolasGoulios/Fract-ol.git
    cd fract-ol
 
 2. Compile the project using the provided Makefile:
@@ -67,4 +67,4 @@ R - 			Reset to default view (in bonus paart)
 - **Utility Functions**: Manages cleanup, parsing, and initialization tasks.
 
 
-![Math](/Users/nikolas/HiveCore/Fract-ol/pics/253B1FE4-9090-4A04-AD6E-FEC00E306709_1_102_o.jpeg)
+![Math](Fract-ol/pics/253B1FE4-9090-4A04-AD6E-FEC00E306709_1_102_o.jpeg)
