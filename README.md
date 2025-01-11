@@ -1,6 +1,6 @@
 # Fract-ol 🌌
 
-![Fractal Example](Fract-ol/pics/84869652-D8A5-4388-81A5-FB64CCB1316B.jpeg)
+![Fractal Example](pics/fractal2.jpeg)
 
 **Fract-ol** is a visually stunning fractal generation program built in C. Utilizing the modern MLX42 graphics library, Fract-ol renders intricate fractals such as the Mandelbrot and Julia sets with real-time controls for zooming, panning, and iteration adjustments.
 
@@ -67,4 +67,4 @@ R - 			Reset to default view (in bonus paart)
 - **Utility Functions**: Manages cleanup, parsing, and initialization tasks.
 
 
-![Math](Fract-ol/pics/253B1FE4-9090-4A04-AD6E-FEC00E306709_1_102_o.jpeg)
+![Math](pics/fractal3.jpeg)
