@@ -52,13 +52,6 @@ Usage: ./fractol [fractol_name] [complex_number]
 ./fractol julia -0.5 0.4
 ```
 
-
-ESC	-			Exit the program
-Arrow Keys	-	Pan the view
-Mouse Scroll -	Zoom in/out following the mouse
-R - 			Reset to default view (in bonus paart)
-+ / - (Keypad)- Increase/decrease iterations
-
 ## Core Components 🛠️
 
 - **Fractal Calculation**: Implements fractal-specific formulas (Mandelbrot, Julia).
@@ -68,3 +61,6 @@ R - 			Reset to default view (in bonus paart)
 
 
 ![Math](pics/fractal3.jpeg)
+
+
+### That Was it. Thank you all !!!
