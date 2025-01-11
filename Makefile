@@ -6,7 +6,7 @@
 #    By: ngoulios <ngoulios@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/01 17:58:04 by ngoulios          #+#    #+#              #
-#    Updated: 2024/12/04 18:16:45 by ngoulios         ###   ########.fr        #
+#    Updated: 2025/01/11 14:05:50 by ngoulios         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ MLXLIB = $(DIR_LIBMLX42)/build/libmlx42.a
 LIBFT = $(DIR_LIBFT)/libft.a
 
 # MLX42 is dependent on other libraries
-MLXLIB_FLAGS = $(DIR_LIBMLX42)/build/libmlx42.a -ldl -lglfw -lm
+MLXLIB_FLAGS = $(DIR_LIBMLX42)/build/libmlx42.a -ldl -L/opt/homebrew/opt/glfw/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit -lm
 LIBFT_FLAGS = -L $(DIR_LIBFT) -lft
 
 
